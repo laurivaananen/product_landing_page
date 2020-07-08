@@ -20,7 +20,7 @@ module.exports = {
         "-200px": "-200px",
       },
       fontFamily: {
-        sans: ["'Noto Sans'", ...defaultTheme.fontFamily.sans],
+        sans: ["'Noto Sans TC'", ...defaultTheme.fontFamily.sans],
       },
     },
   },

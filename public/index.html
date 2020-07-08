@@ -13,6 +13,8 @@
       href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap"
       rel="stylesheet"
     />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap" rel="stylesheet">
+
     <script
       src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.4.1/dist/alpine.min.js"
       defer
@@ -21,59 +23,35 @@
   </head>
   <body class="antialiased font-sans">
     <div
-      x-data="hero()"
-      x-init="initImageLoop()"
-      x-on:mouseenter="stopImageLoop()"
-      x-on:mouseleave="initImageLoop()"
-      class="relative overflow-hidden w-screen h-720px bg-gray-700 mx-auto"
+      class="relative overflow-hidden w-full h-720px bg-gray-700 mx-auto"
     >
-      <template x-for="image in images">
+    <header class="absolute top-0 inset-x-0 z-20">
+      <nav class="max-w-6xl mx-auto flex justify-between">
+        <a href="" class="text-white font-bold opacity-75 h-12 flex items-center">Home</a>
+        <div class="flex">
+          <a href="" class="text-white opacity-75 h-12 flex items-center">Pricing</a>
+          <a href="" class="ml-8 text-white opacity-75 h-12 flex items-center">Services</a>
+          <a href="" class="ml-8 text-white opacity-75 h-12 flex items-center">About</a>
+          <a href="" class="ml-8 text-white opacity-75 h-12 flex items-center">Contact Us</a>
+          <a href="" class="ml-8 text-white font-bold opacity-75 h-12 flex items-center">Sign In</a>
+        </div>
+      </nav>
+    </header>
         <div
-          :style="image.path"
-          class="w-screen h-full absolute z-0"
-          :class="{'z-20' : activeImage === image.id, 'z-10' : activeImage === image.id + 1}"
-          x-show="activeImage === image.id"
-          x-transition:enter="transition ease-out transform duration-500 -ml-1280px"
-          x-transition:enter-start="opacity-75 transform"
-          x-transition:enter-end="opacity-100 transform translate-x-1280px"
-          x-transition:leave="transition ease-out duration-500"
-          x-transition:leave-start="opacity-100"
-          x-transition:leave-end="opacity-100 transform translate-x-1280px"
+          style="background-image: linear-gradient(rgb(78, 78, 78), rgb(131, 131, 131)), url(images/london_crop.jpg); background-blend-mode: multiply"
+          class="bg-cover w-full h-full absolute"
         >
           <div class="max-w-6xl mx-auto mt-48 flex flex-row">
-            <div class="w-1/2">
+            <div class="w-3/5">
               <h1
                 class="text-5xl font-bold text-white leading-tight"
-                x-text="image.h1"
-              ></h1>
-              <p class="mt-6 text-xl text-white" x-text="image.p"></p>
-              <div class="mt-12">
-                <a
-                  x-text="image.button"
-                  href=""
-                  class="px-6 py-3 rounded-md bg-green-600 text-green-100 text-xl shadow-lg"
-                ></a>
-              </div>
+              >We Make the Future Decentralized</h1>
+              <p class="mt-6 text-lg text-white opacity-75">Industry leaders in next generation crypto payments.</p>
+              <p class="mt-2 text-lg text-white opacity-75">We don't settle for the current best. We innovate and create new ground on the crypto currency payments services.</p>
+              <p class="mt-2 text-lg text-white opacity-75">Trusted by millions of people, every day.</p>
             </div>
-            <div class="w-1/2">
-              <div x-html="image.form"></div>
-            </div>
-          </div>
-        </div>
-      </template>
-    </div>
-    <script>
-      function hero() {
-        return {
-          images: [
-            {
-              id: 0,
-              path: `background-image: url(images/london_crop.jpg)`,
-              h1: "Best rates in the industry",
-              p:
-                "We hand-pick our rates with reliable vendors accross the globe",
-              button: "Check Prices",
-              form: `<div
+            <div class="w-2/5">
+              <div
                 class="w-full shadow-2xl bg-white border p-8 border-gray-400 rounded-lg"
               >
                 <div class="mb-4">
@@ -87,123 +65,71 @@
                   />
                 </div>
                 <div class="mb-6">
-                  <label for="email" class="block text-gray-600 mb-2"
+                  <label for="password" class="block text-gray-600 mb-2"
                     >Password</label
                   >
                   <input
                     type="text"
-                    id="email"
+                    id="password"
+                    class="rounded py-2 px-3 w-full text-gray-700 appearance-none border"
+                  />
+                </div>
+                <div class="mb-6">
+                  <label for="repeatPassword" class="block text-gray-600 mb-2"
+                    >Repeat Password</label
+                  >
+                  <input
+                    type="text"
+                    id="repeatPassword"
                     class="rounded py-2 px-3 w-full text-gray-700 appearance-none border"
                   />
                 </div>
                 <div class="flex items-center mb-6">
                   <button
-                    class="font-bold px-4 py-2 rounded bg-blue-500 text-blue-100"
+                    class="font-bold px-4 py-2 rounded bg-green-600 text-green-100"
                   >
-                    Sign in
+                    Create Account
                   </button>
-                  <a href="" class="text-blue-500 ml-4">Forgot password?</a>
+                  <a href="" class="text-blue-500 ml-4"></a>
                 </div>
-                <div class="flex items-center">
-                  <div class="border-t border-gray-400 flex-1"></div>
-                  <p class="px-4 text-gray-500 text-sm">
-                    Don't have an account yet?
-                  </p>
-                  <div class="border-t border-400 flex-1"></div>
+                <div class="">
+                  <p class="text-sm text-gray-500">By signing up you agree that you have read our <a href="" class="text-blue-400 underline">Privacy Policy</a> and <a href="" class="text-blue-400 underline">Terms of Services</a>.</p>
                 </div>
-              </div>`,
-            },
-            {
-              id: 1,
-              path: `background-image: url(images/new_york_crop.jpg)`,
-              h1: "Easy to use use interface",
-              p:
-                "Industry changing intuuitive UI makes it easy to keep your finances in check",
-              button: "Sign Up",
-              form: `<div
-                class="w-full shadow-2xl bg-white border p-8 border-gray-400 rounded-lg"
-              >
-                <div class="mb-4">
-                  <label for="messageEmail" class="block text-gray-600 mb-2"
-                    >Your email address</label
-                  >
-                  <input
-                    type="text"
-                    id="messageEmail"
-                    class="rounded py-2 px-3 w-full text-gray-700 appearance-none border"
-                  />
-                </div>
-                <div class="mb-4">
-                  <label for="message" class="block text-gray-600 mb-2"
-                    >Message</label
-                  >
-                  <input
-                    type="text"
-                    id="message"
-                    class="rounded py-2 px-3 w-full text-gray-700 appearance-none border"
-                  />
-                </div>
-                <button
-                  class="font-bold px-4 py-2 rounded bg-blue-500 text-blue-100"
-                >
-                  Contact Us
-                </button>
-              </div>`,
-            },
-            {
-              id: 2,
-              path: `background-image: url(images/monaco_crop.jpg)`,
-              h1: "Realiable service 24/7",
-              p:
-                "World class customer support makes all of your actions with us secure and trusted.",
-              button: "Contact Us",
-              form: `<div
-                class="w-full shadow-2xl bg-white border p-8 border-gray-400 rounded-lg"
-              >
-              <div class="mb-4">
-                <p class="text-green-500 font-bold text-5xl leading-tight">
-                  $1 520 000
-                </p>
-                <p class="text-sm text-gray-700"></p>
-                  In transactions the last day
-                </p>
               </div>
-              <div class="mb-4">
-                <p class="text-green-500 font-bold text-5xl leading-tight">
-                  1.24s
-                </p>
-                <p class="text-sm text-gray-700"></p>
-                  Average transaction length
-                </p>
-              </div>
-              <a href="" 
-                class="font-bold px-4 py-2 rounded bg-blue-500 text-blue-100">
-                See our stats</a>
-              </div>`,
-            },
-          ],
-          activeImage: 0,
-          intervalID: 0,
-          initImageLoop() {
-            console.log(
-              `Init image loop TIMEOUT. ActiveId: ${this.activeImage}`
-            );
-            setTimeout(() => {
-              console.log(
-                `Init image loop INTERVAL. ActiveId: ${this.activeImage}`
-              );
-              this.intervalID = setInterval(() => {
-                const newId = (this.activeImage + 1) % this.images.length;
-                console.log(`New id ${newId}`);
-                this.activeImage = newId;
-              }, 4000);
-            }, 1000);
-          },
-          stopImageLoop() {
-            clearInterval(this.intervalID);
-          },
-        };
-      }
-    </script>
+            </div>
+          </div>
+        </div>
+      </template>
+    </div>
+    <div>
+      <div class="max-w-6xl mx-auto py-16">
+        <p class="text-center text-gray-700 text-5xl font-bold">We process</p>
+        <h2 class="text-center text-green-500 text-6xl font-bold">$1 642 000 <span class="text-gray-500 text-4xl">in crypto payments</span></h2>
+        <p class="text-center text-gray-700 text-5xl font-bold">Every. Single. Hour.</p>
+        <h3 class="text-3xl text-gray-900 mt-16">You can trust our state of the art payment gateway system</h3>
+        <ul class="ml-8 mt-4 space-y-4">
+          <li class="text-gray-700">99,9% uptime in the last month</li>
+          <li class="text-gray-700">GDPR compliant</li>
+          <li class="text-gray-700">26 edge nodes around the globe</li>
+          <li class="text-gray-700">Lowest average latency compared to competitors</li>
+        </ul>
+        <div class="text-center mt-12">
+          <a class="text-xl px-6 py-3 bg-green-600 text-green-100 rounded-md" href="">Check our Pricing</a>
+        </div>
+      </div>
+    </div>
+    <div class="bg-green-100">
+      <div class="max-w-6xl mx-auto py-16">
+        <h2 class="text-center text-green-500 text-5xl font-bold">Easiest to use interface in the Industry</h2>
+        <div>
+          <div class="bg-gray-100 rounded-lg border border-gray-300">
+            <p class="bg-gray-200 p-4 border-b font-bold text-gray-700">Latest payments</p>
+            <ul>
+              <li class="flex"><p>Justin T.</p><p>$5,000</p><p>2 days left</p><p>Bitcoin</p></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
